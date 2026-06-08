@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/search-breweries.css" />
+
+    <!-- Browser tab title -->
+    <title>iBrew - Find Breweries</title>
+
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/8700864f26.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Modal -->
+    <dialog id="my-dialog" class="modal" popover autofocus></dialog>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="nav__row">
+        <figure class="nav__logo--wrapper">
+          <img src="./assets/logo.png" alt="iBrew Logo" class="nav__logo" />
+        </figure>
+
+        <ul class="nav__links">
+          <li><a href="/" class="nav__link text-tertiary">Home</a></li>
+          <li>
+            <a href="#" class="nav__link text-tertiary">Random Brewery</a>
+          </li>
+          <li>
+            <a
+              href="/search-breweries.html"
+              class="nav__link btn btn-primary btn-primary-hover"
+              >Find Breweries</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <section class="section" id="search-results-section">
+        <div class="search__wrapper">
+          <h1 class="search__title">Find Breweries</h1>
+
+          <form class="search__form" onsubmit="onSearchBreweries(event)">
+            <i class="search__icon fa-solid fa-magnifying-glass"></i>
+            <input
+              class="search__input"
+              placeholder="Search for breweries..."
+            />
+            <button class="search__btn btn btn-primary btn-dark-hover">
+              Search
+            </button>
+          </form>
+        </div>
+
+        <div class="search-results__wrapper">
+          <div class="search-results-filter__wrapper">
+            <h3 class="search-results-filter__count animate-slide-in-left"></h3>
+            <select
+              class="search-results-filter__dropdown animate-slide-in-right"
+              onchange="onSortSearchResults(event)"
+            >
+              <option value="">Sort By</option>
+              <option value="name-asc">Name (A-Z)</option>
+              <option value="name-desc">Name (Z-A)</option>
+            </select>
+          </div>
+
+          <ul class="search-results__list"></ul>
+
+          <div class="search-results__expand-btn--wrapper">
+            <button
+              class="btn btn-primary btn-dark-hover search-results__expand-btn"
+              onclick="onExpandSearchResults()"
+            >
+              Load More
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer__wrapper">
+        <figure class="footer__logo--wrapper">
+          <img src="./assets/logo.png" alt="iBrew Logo" class="img" />
+        </figure>
+
+        <ul class="footer__links">
+          <li><a href="/" class="text-tertiary">Home</a></li>
+          <li><a href="#" class="text-tertiary">Random Brewery</a></li>
+          <li>
+            <a href="/search-breweries.html" class="text-tertiary"
+              >Find Breweries</a
+            >
+          </li>
+        </ul>
+
+        <p class="text-tertiary">&copy; 2026 iBrew. All rights reserved.</p>
+        <p class="text-tertiary">Created by Dylan Hua</p>
+      </div>
+    </footer>
+
+    <script src="javascript/api/brewery.js"></script>
+    <script src="javascript/utilities.js"></script>
+    <script src="javascript/search-breweries.js"></script>
+    <script src="javascript/map.js"></script>
+  </body>
+</html>

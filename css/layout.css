@@ -12,6 +12,7 @@
     --tertiary-color: #FFF7E8;
     --font-heading: 'Fraunces', serif;
     --font-body: 'Barlow', sans-serif;
+    --animation-duration: 1s;
 }
 
 * {
@@ -97,6 +98,10 @@ img {
     display: flex;
 }
 
+.align-items-center {
+    align-items: center;
+}
+
 /* 
  
     NAVIGATION BAR
@@ -151,4 +156,165 @@ footer {
 .footer__links {
     display: flex;
     gap: 3rem;
+}
+
+/*
+
+    MODAL
+
+*/
+
+.modal {
+    border: none;
+    background-color: var(--tertiary-color);
+    border-radius: 10px;
+}
+.modal:popover-open {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    transition: all 0.5s ease-in-out;
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+}
+@starting-style {
+    .modal:popover-open {
+        opacity: 0;
+        transform: translateY(-50%) scaleY(0);
+    }
+}
+
+.modal::backdrop {
+    transition: background-color 0.5s ease-in-out;
+}
+.modal:popover-open::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+/* This starting-style rule cannot be nested inside the above selector
+because the nesting selector cannot represent pseudo-elements. */
+@starting-style {
+    .modal:popover-open::backdrop {
+        background-color: transparent; 
+    }
+}
+
+/* 
+
+    ANIMATION
+
+*/
+.animate-pop-in {
+    animation: popIn var(--animation-duration) ease-in-out;
+}
+.animate-pop-out {
+    animation: popOut var(--animation-duration) ease-in-out;
+}
+
+.animate-slide-in-left {
+    animation: slideInFromLeft var(--animation-duration) ease-in-out;
+}
+
+.animate-slide-in-right {
+    animation: slideInFromRight var(--animation-duration) ease-in-out;
+}
+
+.rotate-in {
+    animation: rotateIn var(--animation-duration) ease-in-out;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes popOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+}
+
+/* 
+
+    SKELETON LOADER
+
+*/
+.skeleton {
+    background: linear-gradient(90deg,
+            #e0e0e0 25%,
+            #f0f0f0 50%,
+            #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+}
+
+.skeleton-title {
+    width: 60%;
+    height: 24px;
+    margin-bottom: 12px;
+}
+
+.skeleton-text {
+    width: 100%;
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+/* Keyframes moving the gradient rightward */
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
