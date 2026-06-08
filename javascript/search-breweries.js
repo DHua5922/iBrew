@@ -1,0 +1,181 @@
+let breweryList = [];
+let currentEndExpandIndex = 8;
+let chosenBrewery = {};
+
+const breweryListElem = document.querySelector(".search-results__list");
+const searchResultsExpandBtnWrapper = document.querySelector(
+  ".search-results__expand-btn--wrapper",
+);
+const searchResultsWrapperElem = document.querySelector(
+  ".search-results__wrapper",
+);
+
+async function onSearchBreweries(evt) {
+  evt.preventDefault();
+
+  displaySkeletonLoader();
+
+  const searchInput = document.querySelector(".search__input");
+  const query = searchInput.value.trim();
+  if (query) {
+    breweryList = await searchBreweriesApi(query);
+    currentEndExpandIndex = 8;
+    displaySearchResults(currentEndExpandIndex);
+  }
+}
+
+function onExpandSearchResults() {
+  currentEndExpandIndex += 8;
+  displaySearchResults(currentEndExpandIndex);
+
+  if (currentEndExpandIndex >= breweryList.length) {
+    searchResultsExpandBtnWrapper.style.display = "none";
+  }
+}
+
+function displaySearchResults(currentEndExpandIndex) {
+  const searchResultsCountElem = document.querySelector(
+    ".search-results-filter__count",
+  );
+
+  const breweryHtml = (brewery) => {
+    const addressParts = [
+      brewery.street,
+      brewery.address_2,
+      brewery.address_3,
+      brewery.city,
+      brewery.state,
+    ].filter(Boolean);
+
+    return `<li class="search-results__item--wrapper">
+        <button class="search-results__item" onclick="onClickBrewery(event)" data-brewery-id="${brewery.id}" popovertarget="my-dialog">
+            <div class="search-results__item--overlay">Click to view details</div>
+            <h4 class="search-results__item--title">${brewery.name}</h4>
+            ${brewery.brewery_type ? `<p class="search-results__item--para">Type: ${brewery.brewery_type}</p>` : ""}
+            ${addressParts.length ? `<p class="search-results__item--para">${addressParts.join(", ")}</p>` : ""}
+            ${brewery.phone ? `<p class="search-results__item--para">Phone: ${brewery.phone}</p>` : ""}
+            ${brewery.website_url ? `<p class="search-results__item--para"><a href="${brewery.website_url}" target="_blank">Visit Website</a></p>` : ""}
+        </button>
+    </li>`;
+  };
+
+  animateCounter(
+    searchResultsCountElem,
+    breweryList.length,
+    (num) => `Search Results: ${num}`,
+  );
+
+  searchResultsWrapperElem.style.display = "block";
+  searchResultsWrapperElem.classList.add("animate-pop-in");
+  searchResultsExpandBtnWrapper.style.display = "block";
+
+  breweryListElem.innerHTML = breweryList
+    .slice(0, currentEndExpandIndex)
+    .map((brewery) => breweryHtml(brewery))
+    .join("");
+}
+
+function onClickBrewery(evt) {
+  const breweryItem = evt.target.closest(".search-results__item");
+  const breweryId = breweryItem.getAttribute("data-brewery-id");
+  chosenBrewery = breweryList.find((brewery) => brewery.id === breweryId);
+
+  const breweryTypeHtml = `<p class="brewery__para">Type: ${chosenBrewery.brewery_type}</p>`;
+
+  const address = [
+    chosenBrewery.street,
+    chosenBrewery.address_2,
+    chosenBrewery.address_3,
+    chosenBrewery.city,
+    chosenBrewery.state,
+  ]
+    .filter(Boolean)
+    .join(", ");
+  const addressHtml = `
+    <div class="row align-items-center brewery__row">
+      <i class="fa-solid fa-location-dot"></i> 
+      <p class="brewery__para">
+        ${address}
+      </p>
+    </div>
+  `;
+
+  const phoneHtml = `
+    <div class="row align-items-center brewery__row">
+      <i class="fa-solid fa-phone"></i> 
+      <p class="brewery__para">
+        ${chosenBrewery.phone}
+      </p>
+    </div>
+  `;
+
+  const websiteHtml = `
+    <div class="row align-items-center brewery__row">
+      <i class="fa-solid fa-earth-americas"></i> 
+      <p class="brewery__para">
+        <a href="${chosenBrewery.website_url}" target="_blank">${chosenBrewery.website_url}</a>
+      </p>
+    </div>
+  `;
+
+  document.querySelector(".modal").innerHTML = `
+    <div id="map"></div>
+  
+    <div class="brewery__details">
+      <h2>${chosenBrewery.name}</h2>
+      ${chosenBrewery.brewery_type ? breweryTypeHtml : ""}
+      ${addressHtml}
+      ${chosenBrewery.phone ? phoneHtml : ""}
+      ${chosenBrewery.website_url ? websiteHtml : ""}
+    </div>
+  `;
+
+  initMap(chosenBrewery);
+}
+
+function onSortSearchResults(evt) {
+  if (evt.target.value === "name-asc") {
+    breweryList.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+
+      return 0;
+    });
+  } else if (evt.target.value === "name-desc") {
+    breweryList.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      if (nameA > nameB) return -1;
+      if (nameA < nameB) return 1;
+
+      return 0;
+    });
+  }
+
+  displaySearchResults(currentEndExpandIndex);
+}
+
+function displaySkeletonLoader() {
+  const skeletonHtml = `<li class="search-results__item--wrapper animate-pop-in">
+        <button class="search-results__item">
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-text"></div>
+        </button>
+    </li>`;
+
+  searchResultsWrapperElem.style.display = "none";
+  searchResultsWrapperElem.classList.remove("animate-pop-in");
+  searchResultsExpandBtnWrapper.style.display = "block";
+
+  breweryListElem.innerHTML = Array(8)
+    .fill(0)
+    .map(() => skeletonHtml)
+    .join("");
+}
