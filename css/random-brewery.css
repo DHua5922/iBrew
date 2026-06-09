@@ -1,0 +1,53 @@
+#random-brewery-section {
+    min-height: 100vh;
+    padding: 12vh 2vw;
+}
+
+.brewery__header {
+    margin-bottom: 4rem;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.brewery__details {
+    gap: 3rem;
+}
+
+.brewery__row {
+    gap: 0.3rem;
+}
+#map {
+    height: 400px;
+}
+#map, .brewery__description {
+    width: 50%;
+}
+.brewery__para {
+    line-height: 2rem;
+}
+
+.brewery__button--refresh {
+    display: block;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+    .brewery__details {
+        padding: 5vh 5vw;
+        flex-wrap: wrap;
+    }
+
+    #map, .brewery__description {
+        width: 100%;
+    }
+    .brewery__description {
+        text-align: center;
+    }
+    .brewery__row {
+        justify-content: center;
+    }
+    .brewery__para {
+        line-height: 2rem;
+    }
+}

@@ -9,10 +9,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/search-breweries.css" />
+    <link rel="stylesheet" href="css/random-brewery.css" />
 
     <!-- Browser tab title -->
-    <title>iBrew - Find Breweries</title>
+    <title>iBrew - Random Brewery</title>
 
     <!-- Font Awesome Icons -->
     <script
@@ -51,46 +51,20 @@
 
     <!-- Main Content -->
     <main>
-      <section class="section" id="search-results-section">
-        <div class="search__wrapper">
-          <h1 class="search__title">Find Breweries</h1>
+      <section class="section" id="random-brewery-section">
+        <h1 class="brewery__header animate-pop-in">Try This Brewery!</h1>
 
-          <form class="search__form" onsubmit="onSearchBreweries(event)">
-            <i class="search__icon fa-solid fa-magnifying-glass"></i>
-            <input
-              class="search__input"
-              placeholder="Search for breweries..."
-            />
-            <button class="search__btn btn btn-primary btn-dark-hover">
-              Search
-            </button>
-          </form>
+        <div class="brewery__details row">
+          <div class="animate-slide-in-left" id="map"></div>
+          <div class="brewery__description animate-slide-in-right"></div>
         </div>
 
-        <div class="search-results__wrapper">
-          <div class="search-results-filter__wrapper">
-            <h3 class="search-results-filter__count animate-slide-in-left"></h3>
-            <select
-              class="search-results-filter__dropdown animate-slide-in-right"
-              onchange="onSortSearchResults(event)"
-            >
-              <option value="">Sort By</option>
-              <option value="name-asc">Name (A-Z)</option>
-              <option value="name-desc">Name (Z-A)</option>
-            </select>
-          </div>
-
-          <ul class="search-results__list"></ul>
-
-          <div class="search-results__expand-btn--wrapper">
-            <button
-              class="btn btn-primary btn-dark-hover search-results__expand-btn"
-              onclick="onExpandSearchResults()"
-            >
-              Load More
-            </button>
-          </div>
-        </div>
+        <button
+          class="brewery__button--refresh btn btn-primary animate-pop-in"
+          onclick="loadBrewery()"
+        >
+          Give Me Another Brewery
+        </button>
       </section>
     </main>
 
@@ -121,8 +95,10 @@
     </footer>
 
     <script src="javascript/api/brewery.js"></script>
-    <script src="javascript/utilities.js"></script>
-    <script src="javascript/search-breweries.js"></script>
     <script src="javascript/map.js"></script>
+    <script src="javascript/random-brewery.js"></script>
+    <script>
+      loadBrewery();
+    </script>
   </body>
 </html>
