@@ -2,52 +2,62 @@
     padding: 15rem 4rem;
 }
 
-.hero__row, .random-brewery__row, .find-brewery__row {
+.landing__row {
     gap: 3rem;
 }
 
-.hero__title, .random-brewery__title, .find-brewery__title {
+.landing__title {
     font-size: 2.5rem;
     margin-bottom: 1.25rem;
 }
 
-.hero__para, .random-brewery__para, .find-brewery__para {
+.landing__para {
     font-size: 1.25rem;
     margin-bottom: 2rem;
     line-height: 2.25rem;
 }
 
-.hero__btn, .random-brewery__btn, .find-brewery__btn {
+.landing__link {
     padding: 0.75rem 1.75rem;
     font-size: 1.25rem;
+    text-decoration: none;
 }
 
-
-/*
-
-    HERO SECTION
-
-*/
-.hero__image--wrapper {
-    flex: 0.4;
-}
-
-.hero__description {
-    flex: 0.6;
-}
-
-
-/*
-
-    RANDOM BREWERY SECTION & FIND BREWERY SECTION
-
-*/
-
-.random-brewery__image--wrapper, .find-brewery__image--wrapper {
+.landing__image--wrapper, .landing__description {
     flex: 0.5;
 }
 
-.random-brewery__description,
-.find-brewery__description {
-    flex: 0.5;
+.landing__description,
+.landing__image--wrapper {
+    transition: all var(--animation-duration) ease;
+}
+
+@media (max-width: 992px) {
+    .landing__title {
+        font-size: 2rem;
+    }
+
+    .landing__para, .landing__link {
+        font-size: 1rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .landing-section {
+        padding: 8rem 2rem;
+    }
+
+    .landing__row {
+        flex-direction: column;
+    }
+    .landing__image--wrapper,
+    .landing__description {
+        flex: unset;
+    }
+
+    .landing__description {
+        text-align: center;
+    }
+    
 }
