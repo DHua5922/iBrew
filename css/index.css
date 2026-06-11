@@ -51,6 +51,10 @@
     .landing__row {
         flex-direction: column;
     }
+    .landing__row--reverse {
+        flex-direction: column-reverse;
+    }
+
     .landing__image--wrapper,
     .landing__description {
         flex: unset;
