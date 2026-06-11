@@ -67,6 +67,14 @@
     text-align: center;
 }
 
+.search-results__error {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 5rem;
+}
+
 .search-results__item--wrapper {
     padding: 1rem;
     width: 25%;

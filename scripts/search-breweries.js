@@ -1,5 +1,6 @@
 let breweryList = [];
-let currentEndExpandIndex = 8;
+const initialEndIndex = 8;
+let currentEndExpandIndex = initialEndIndex;
 let chosenBrewery = {};
 
 const breweryListElem = document.querySelector(".search-results__list");
@@ -18,14 +19,19 @@ async function onSearchBreweries(evt) {
   const searchInput = document.querySelector(".search__input");
   const query = searchInput.value.trim();
   if (query) {
-    breweryList = await searchBreweriesApi(query);
-    currentEndExpandIndex = 8;
-    displaySearchResults(currentEndExpandIndex);
+    try {
+      breweryList = await searchBreweriesApi(query);
+      currentEndExpandIndex = initialEndIndex;
+      displaySearchResults(currentEndExpandIndex);
+    } catch (err) {
+      searchResultsWrapperElem.style.display = "block";
+      searchResultsWrapperElem.innerHTML = `<p class="search-results__error">An error occurred while fetching breweries. Please try again.</p>`;
+    }
   }
 }
 
 function onExpandSearchResults() {
-  currentEndExpandIndex += 8;
+  currentEndExpandIndex += initialEndIndex;
   displaySearchResults(currentEndExpandIndex);
 
   if (currentEndExpandIndex >= breweryList.length) {
@@ -67,12 +73,23 @@ function displaySearchResults(currentEndExpandIndex) {
 
   searchResultsWrapperElem.style.display = "block";
   searchResultsWrapperElem.classList.add("animate-pop-in");
-  searchResultsExpandBtnWrapper.style.display = "block";
 
-  breweryListElem.innerHTML = breweryList
-    .slice(0, currentEndExpandIndex)
-    .map((brewery) => breweryHtml(brewery))
-    .join("");
+  if (breweryList.length > initialEndIndex)
+    searchResultsExpandBtnWrapper.style.display = "block";
+  else searchResultsExpandBtnWrapper.style.display = "none";
+
+  if (breweryList.length === 0) {
+    breweryListElem.style.justifyContent = "center";
+    breweryListElem.innerHTML = `<p class="search-results__error">No breweries found for "${document.querySelector(".search__input").value.trim()}". Please try a different search.</p>`;
+    searchResultsExpandBtnWrapper.style.display = "none";
+    return;
+  } else {
+    breweryListElem.style.justifyContent = "start";
+    breweryListElem.innerHTML = breweryList
+      .slice(0, currentEndExpandIndex)
+      .map((brewery) => breweryHtml(brewery))
+      .join("");
+  }
 }
 
 function onClickBrewery(evt) {
