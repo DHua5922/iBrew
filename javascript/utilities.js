@@ -43,4 +43,9 @@ function loadTheme() {
   }
 }
 
+function onExpandNavMenu() {
+  const navLinks = document.querySelector(".nav__links--expandable");
+  navLinks.classList.toggle("expanded");
+}
+
 window.addEventListener("load", loadTheme);
