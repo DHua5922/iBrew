@@ -111,14 +111,22 @@ img {
     border-radius: 50px;
 }
 
+.btn-transparent {
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: none;
+}
+
 .btn-primary {
     background-color: var(--primary-color);
     color: var(--tertiary-color);
 }
+
 .btn-dark-hover:hover {
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
 }
+
 .btn-primary-hover:hover {
     background-color: var(--tertiary-color);
     color: var(--primary-color);
@@ -153,6 +161,7 @@ nav {
 }
 
 .nav__row {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -201,6 +210,7 @@ nav {
 
 @media (max-width: 768px) {
     .nav__row .nav__links {
+        position: absolute;
         transform-origin: right center;
         animation: popOut var(--animation-duration) ease-in-out forwards;
     }
@@ -307,6 +317,20 @@ because the nesting selector cannot represent pseudo-elements. */
 
 .rotate-in {
     animation: rotateIn var(--animation-duration) ease-in-out;
+}
+
+.animate-slide-in-left-on-scroll-in {
+    animation: slideInFromLeft var(--animation-duration) ease-in-out;
+    /* Bind the timeline to the element's entry into the viewport */
+    animation-timeline: view();
+    /* Fine-tune when the animation begins and ends */
+    animation-range: entry 0% entry 100%;
+}
+
+.animate-slide-in-right-on-scroll-in {
+    animation: slideInFromRight var(--animation-duration) ease-in-out;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
 }
 
 @keyframes popIn {

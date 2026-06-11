@@ -30,6 +30,7 @@
           </figure>
         </a>
 
+        <!-- Navigation Links -->
         <ul class="nav__links align-items-center animate-slide-in-right">
           <li>
             <a href="index.html" class="link text-tertiary">Home</a>
@@ -39,10 +40,12 @@
               >Random Brewery</a
             >
           </li>
-          <li onclick="toggleTheme()">
-            <i
-              class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
-            ></i>
+          <li>
+            <button class="btn-transparent js-theme-toggle" type="button">
+              <i
+                class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+              ></i>
+            </button>
           </li>
           <li>
             <a
@@ -53,14 +56,17 @@
           </li>
         </ul>
 
-        <i
-          class="fa-solid fa-bars nav__menu-btn animate-slide-in-right"
-          onclick="onExpandNavMenu()"
-        ></i>
+        <button
+          class="btn-transparent nav__menu-btn"
+          type="button"
+        >
+          <i class="fa-solid fa-bars animate-slide-in-right"></i>
+        </button>
       </div>
 
-      <ul class="nav__links--expandable">
-        <div class="nav__links--expandable-content">
+      <!-- Collapsible Navigation Links -->
+      <div class="nav__links--expandable">
+        <ul class="nav__links--expandable-content">
           <li>
             <a href="index.html" class="link text-tertiary">Home</a>
           </li>
@@ -69,10 +75,12 @@
               >Random Brewery</a
             >
           </li>
-          <li onclick="toggleTheme()">
-            <i
-              class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
-            ></i>
+          <li>
+            <button class="btn-transparent js-theme-toggle" type="button">
+              <i
+                class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+              ></i>
+            </button>
           </li>
           <li>
             <a
@@ -81,8 +89,8 @@
               >Find Breweries</a
             >
           </li>
-        </div>
-      </ul>
+        </ul>
+      </div>
     </nav>
 
     <!-- Main Content -->
@@ -118,7 +126,9 @@
       <!-- Random Brewery Section -->
       <section class="section landing-section" id="random-brewery-section">
         <div class="row landing__row landing__row--reverse">
-          <figure class="landing__image--wrapper animate-slide-in-left">
+          <figure
+            class="landing__image--wrapper animate-slide-in-left-on-scroll-in"
+          >
             <img
               src="./assets/landing-image.png"
               alt="Hero Image"
@@ -126,7 +136,7 @@
             />
           </figure>
 
-          <div class="landing__description animate-slide-in-right">
+          <div class="landing__description animate-slide-in-right-on-scroll-in">
             <h1 class="landing__title text-secondary">
               Need Ideas? Find your next favorite brew.
             </h1>
@@ -185,6 +195,6 @@
       </div>
     </footer>
 
-    <script src="javascript/utilities.js"></script>
+    <script src="scripts/utilities.js"></script>
   </body>
 </html>

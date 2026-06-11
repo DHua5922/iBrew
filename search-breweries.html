@@ -21,19 +21,17 @@
     ></script>
   </head>
   <body>
-    <!-- Modal -->
-    <dialog id="my-dialog" class="modal" popover autofocus></dialog>
-
     <!-- Navigation Bar -->
     <nav>
       <div class="nav__row">
         <a href="index.html">
-          <figure class="nav__logo--wrapper">
+          <figure class="nav__logo--wrapper animate-slide-in-left">
             <img src="./assets/logo.png" alt="iBrew Logo" class="nav__logo" />
           </figure>
         </a>
 
-        <ul class="nav__links align-items-center">
+        <!-- Navigation Links -->
+        <ul class="nav__links align-items-center animate-slide-in-right">
           <li>
             <a href="index.html" class="link text-tertiary">Home</a>
           </li>
@@ -42,10 +40,47 @@
               >Random Brewery</a
             >
           </li>
-          <li onclick="toggleTheme()">
-            <i
-              class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
-            ></i>
+          <li>
+            <button class="btn-transparent js-theme-toggle" type="button">
+              <i
+                class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+              ></i>
+            </button>
+          </li>
+          <li>
+            <a
+              href="search-breweries.html"
+              class="link--primary btn btn-primary btn-primary-hover text-tertiary"
+              >Find Breweries</a
+            >
+          </li>
+        </ul>
+
+        <button
+          class="btn-transparent nav__menu-btn"
+          type="button"
+        >
+          <i class="fa-solid fa-bars animate-slide-in-right"></i>
+        </button>
+      </div>
+
+      <!-- Collapsible Navigation Links -->
+      <div class="nav__links--expandable">
+        <ul class="nav__links--expandable-content">
+          <li>
+            <a href="index.html" class="link text-tertiary">Home</a>
+          </li>
+          <li>
+            <a href="random-brewery.html" class="link text-tertiary"
+              >Random Brewery</a
+            >
+          </li>
+          <li>
+            <button class="btn-transparent js-theme-toggle" type="button">
+              <i
+                class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+              ></i>
+            </button>
           </li>
           <li>
             <a
@@ -58,13 +93,16 @@
       </div>
     </nav>
 
+    <!-- Modal -->
+    <dialog id="brewery-dialog" class="modal" popover autofocus></dialog>
+
     <!-- Main Content -->
     <main>
       <section class="section" id="search-results-section">
         <div class="search__wrapper">
           <h1 class="search__title text-secondary">Find Breweries</h1>
 
-          <form class="search__form" onsubmit="onSearchBreweries(event)">
+          <form class="search__form">
             <i class="search__icon fa-solid fa-magnifying-glass"></i>
             <input
               class="search__input"
@@ -83,7 +121,6 @@
             ></h3>
             <select
               class="search-results-filter__dropdown animate-slide-in-right"
-              onchange="onSortSearchResults(event)"
             >
               <option value="">Sort By</option>
               <option value="name-asc">Name (A-Z)</option>
@@ -96,7 +133,7 @@
           <div class="search-results__expand-btn--wrapper">
             <button
               class="btn btn-primary btn-dark-hover search-results__expand-btn"
-              onclick="onExpandSearchResults()"
+              type="button"
             >
               Load More
             </button>
@@ -107,7 +144,7 @@
 
     <!-- Footer -->
     <footer>
-      <div class="footer__wrapper">
+      <div class="footer__wrapper animate-pop-in">
         <a href="index.html">
           <figure class="footer__logo--wrapper">
             <img src="./assets/logo.png" alt="iBrew Logo" class="img" />
@@ -141,9 +178,10 @@
       </div>
     </footer>
 
-    <script src="javascript/api/brewery.js"></script>
-    <script src="javascript/utilities.js"></script>
-    <script src="javascript/search-breweries.js"></script>
-    <script src="javascript/map.js"></script>
+    <!-- Scripts -->
+    <script src="scripts/api/brewery.js"></script>
+    <script src="scripts/utilities.js"></script>
+    <script src="scripts/search-breweries.js"></script>
+    <script src="scripts/map.js"></script>
   </body>
 </html>

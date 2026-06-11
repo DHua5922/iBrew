@@ -48,4 +48,29 @@ function onExpandNavMenu() {
   navLinks.classList.toggle("expanded");
 }
 
-window.addEventListener("load", loadTheme);
+function collapseExpandedNavbarOnDesktop() {
+  const navLinks = document.querySelector(".nav__links--expandable");
+
+  if (!navLinks) return;
+
+  if (window.innerWidth > 768) {
+    navLinks.classList.remove("expanded");
+  }
+}
+
+function bindLayoutEvents() {
+  document
+    .querySelectorAll(".js-theme-toggle")
+    .forEach((button) => button.addEventListener("click", toggleTheme));
+
+  document
+    .querySelector(".nav__menu-btn")
+    ?.addEventListener("click", onExpandNavMenu);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadTheme();
+  bindLayoutEvents();
+  collapseExpandedNavbarOnDesktop();
+});
+window.addEventListener("resize", collapseExpandedNavbarOnDesktop);
