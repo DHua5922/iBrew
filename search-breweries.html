@@ -27,11 +27,13 @@
     <!-- Navigation Bar -->
     <nav>
       <div class="nav__row">
-        <figure class="nav__logo--wrapper">
-          <img src="./assets/logo.png" alt="iBrew Logo" class="nav__logo" />
-        </figure>
+        <a href="index.html">
+          <figure class="nav__logo--wrapper">
+            <img src="./assets/logo.png" alt="iBrew Logo" class="nav__logo" />
+          </figure>
+        </a>
 
-        <ul class="nav__links">
+        <ul class="nav__links align-items-center">
           <li>
             <a href="index.html" class="nav__link text-tertiary">Home</a>
           </li>
@@ -40,10 +42,15 @@
               >Random Brewery</a
             >
           </li>
+          <li onclick="toggleTheme()">
+            <i
+              class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+            ></i>
+          </li>
           <li>
             <a
               href="search-breweries.html"
-              class="nav__link btn btn-primary btn-primary-hover"
+              class="nav__link btn btn-primary btn-primary-hover text-tertiary"
               >Find Breweries</a
             >
           </li>
@@ -55,7 +62,7 @@
     <main>
       <section class="section" id="search-results-section">
         <div class="search__wrapper">
-          <h1 class="search__title">Find Breweries</h1>
+          <h1 class="search__title text-secondary">Find Breweries</h1>
 
           <form class="search__form" onsubmit="onSearchBreweries(event)">
             <i class="search__icon fa-solid fa-magnifying-glass"></i>
@@ -71,7 +78,9 @@
 
         <div class="search-results__wrapper">
           <div class="search-results-filter__wrapper">
-            <h3 class="search-results-filter__count animate-slide-in-left"></h3>
+            <h3
+              class="search-results-filter__count animate-slide-in-left text-secondary"
+            ></h3>
             <select
               class="search-results-filter__dropdown animate-slide-in-right"
               onchange="onSortSearchResults(event)"
@@ -99,9 +108,11 @@
     <!-- Footer -->
     <footer>
       <div class="footer__wrapper">
-        <figure class="footer__logo--wrapper">
-          <img src="./assets/logo.png" alt="iBrew Logo" class="img" />
-        </figure>
+        <a href="index.html">
+          <figure class="footer__logo--wrapper">
+            <img src="./assets/logo.png" alt="iBrew Logo" class="img" />
+          </figure>
+        </a>
 
         <ul class="footer__links">
           <li><a href="index.html" class="text-tertiary">Home</a></li>
@@ -118,7 +129,15 @@
         </ul>
 
         <p class="text-tertiary">&copy; 2026 iBrew. All rights reserved.</p>
-        <p class="text-tertiary">Created by Dylan Hua</p>
+        <p class="text-tertiary">
+          Created by
+          <a
+            class="text-tertiary"
+            href="https://www.huadylan.com"
+            target="_blank"
+            >Dylan Hua</a
+          >
+        </p>
       </div>
     </footer>
 

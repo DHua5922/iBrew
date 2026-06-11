@@ -13,6 +13,12 @@
 
     <!-- Browser tab title -->
     <title>iBrew</title>
+
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/8700864f26.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -24,7 +30,7 @@
           </figure>
         </a>
 
-        <ul class="nav__links">
+        <ul class="nav__links align-items-center">
           <li>
             <a href="index.html" class="nav__link text-tertiary">Home</a>
           </li>
@@ -33,10 +39,15 @@
               >Random Brewery</a
             >
           </li>
+          <li onclick="toggleTheme()">
+            <i
+              class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+            ></i>
+          </li>
           <li>
             <a
               href="search-breweries.html"
-              class="nav__link btn btn-primary btn-primary-hover"
+              class="nav__link btn btn-primary btn-primary-hover text-tertiary"
               >Find Breweries</a
             >
           </li>
@@ -50,8 +61,10 @@
       <section class="section landing-section" id="hero-section">
         <div class="row landing__row">
           <div class="landing__description animate-slide-in-left">
-            <h1 class="landing__title">Discover Your Next Favorite Brew</h1>
-            <p class="landing__para">
+            <h1 class="landing__title text-secondary">
+              Discover Your Next Favorite Brew
+            </h1>
+            <p class="landing__para text-secondary">
               Explore a world of breweries at your fingertips. Whether you're a
               craft beer enthusiast or just looking for a new place to enjoy a
               pint, iBrew has you covered. Find local gems, hidden taprooms, and
@@ -59,7 +72,7 @@
             </p>
 
             <a
-              class="btn btn-primary landing__link btn-dark-hover"
+              class="btn btn-primary landing__link btn-dark-hover text-tertiary"
               href="search-breweries.html"
             >
               Let's Explore Breweries!
@@ -84,11 +97,11 @@
           </figure>
 
           <div class="landing__description animate-slide-in-right">
-            <h1 class="landing__title">
+            <h1 class="landing__title text-secondary">
               Need Ideas? Find your next favorite brew.
             </h1>
 
-            <p class="landing__para">
+            <p class="landing__para text-secondary">
               Feeling adventurous? Let iBrew surprise you with a random brewery
               recommendation. Explore new flavors, hidden gems, and local
               favorites with just a click. Your next great beer experience is
@@ -96,7 +109,7 @@
             </p>
 
             <a
-              class="btn btn-primary landing__link btn-dark-hover"
+              class="btn btn-primary landing__link btn-dark-hover text-tertiary"
               href="random-brewery.html"
             >
               Find Random Brewery
@@ -141,5 +154,7 @@
         </p>
       </div>
     </footer>
+
+    <script src="javascript/utilities.js"></script>
   </body>
 </html>
