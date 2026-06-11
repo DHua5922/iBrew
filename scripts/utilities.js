@@ -48,4 +48,18 @@ function onExpandNavMenu() {
   navLinks.classList.toggle("expanded");
 }
 
-window.addEventListener("load", loadTheme);
+function collapseExpandedNavbarOnDesktop() {
+  const navLinks = document.querySelector(".nav__links--expandable");
+
+  if (!navLinks) return;
+
+  if (window.innerWidth > 768) {
+    navLinks.classList.remove("expanded");
+  }
+}
+
+window.addEventListener("load", () => {
+  loadTheme();
+  collapseExpandedNavbarOnDesktop();
+});
+window.addEventListener("resize", collapseExpandedNavbarOnDesktop);

@@ -48,7 +48,7 @@ function displaySearchResults(currentEndExpandIndex) {
     ].filter(Boolean);
 
     return `<li class="search-results__item--wrapper">
-        <button class="search-results__item" onclick="onClickBrewery(event)" data-brewery-id="${brewery.id}" popovertarget="my-dialog">
+        <button class="search-results__item" onclick="onClickBrewery(event)" data-brewery-id="${brewery.id}" popovertarget="brewery-dialog">
             <div class="search-results__item--overlay">Click to view details</div>
             <h4 class="search-results__item--title">${brewery.name}</h4>
             ${brewery.brewery_type ? `<p class="search-results__item--para">Type: ${brewery.brewery_type}</p>` : ""}

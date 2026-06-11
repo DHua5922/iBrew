@@ -153,6 +153,7 @@ nav {
 }
 
 .nav__row {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -201,6 +202,7 @@ nav {
 
 @media (max-width: 768px) {
     .nav__row .nav__links {
+        position: absolute;
         transform-origin: right center;
         animation: popOut var(--animation-duration) ease-in-out forwards;
     }
