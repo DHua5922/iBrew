@@ -111,14 +111,22 @@ img {
     border-radius: 50px;
 }
 
+.btn-transparent {
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: none;
+}
+
 .btn-primary {
     background-color: var(--primary-color);
     color: var(--tertiary-color);
 }
+
 .btn-dark-hover:hover {
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
 }
+
 .btn-primary-hover:hover {
     background-color: var(--tertiary-color);
     color: var(--primary-color);

@@ -1,7 +1,9 @@
 const baseUrl = "https://api.openbrewerydb.org/v1/breweries";
 
 async function searchBreweriesApi(query) {
-  const response = await fetch(`${baseUrl}/search?query=${query}`);
+  const response = await fetch(
+    `${baseUrl}/search?query=${encodeURIComponent(query)}`,
+  );
   return response.json();
 }
 
