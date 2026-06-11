@@ -87,4 +87,10 @@ function displaySkeletonLoader() {
   mapElem.innerHTML = `<div class="skeleton skeleton-map"></div>`;
 }
 
-window.addEventListener("load", loadBrewery);
+window.addEventListener("DOMContentLoaded", () => {
+  document
+    .querySelector(".brewery__button--refresh")
+    ?.addEventListener("click", loadBrewery);
+
+  loadBrewery();
+});

@@ -58,8 +58,19 @@ function collapseExpandedNavbarOnDesktop() {
   }
 }
 
-window.addEventListener("load", () => {
+function bindLayoutEvents() {
+  document
+    .querySelectorAll(".js-theme-toggle")
+    .forEach((button) => button.addEventListener("click", toggleTheme));
+
+  document
+    .querySelector(".nav__menu-btn")
+    ?.addEventListener("click", onExpandNavMenu);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
   loadTheme();
+  bindLayoutEvents();
   collapseExpandedNavbarOnDesktop();
 });
 window.addEventListener("resize", collapseExpandedNavbarOnDesktop);

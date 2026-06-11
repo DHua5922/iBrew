@@ -41,7 +41,7 @@
             >
           </li>
           <li>
-            <button class="btn-transparent" onclick="toggleTheme()">
+            <button class="btn-transparent js-theme-toggle" type="button">
               <i
                 class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
               ></i>
@@ -58,7 +58,7 @@
 
         <button
           class="btn-transparent nav__menu-btn"
-          onclick="onExpandNavMenu()"
+          type="button"
         >
           <i class="fa-solid fa-bars animate-slide-in-right"></i>
         </button>
@@ -76,7 +76,7 @@
             >
           </li>
           <li>
-            <button class="btn-transparent" onclick="toggleTheme()">
+            <button class="btn-transparent js-theme-toggle" type="button">
               <i
                 class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
               ></i>
@@ -102,7 +102,7 @@
         <div class="search__wrapper">
           <h1 class="search__title text-secondary">Find Breweries</h1>
 
-          <form class="search__form" onsubmit="onSearchBreweries(event)">
+          <form class="search__form">
             <i class="search__icon fa-solid fa-magnifying-glass"></i>
             <input
               class="search__input"
@@ -121,7 +121,6 @@
             ></h3>
             <select
               class="search-results-filter__dropdown animate-slide-in-right"
-              onchange="onSortSearchResults(event)"
             >
               <option value="">Sort By</option>
               <option value="name-asc">Name (A-Z)</option>
@@ -134,7 +133,7 @@
           <div class="search-results__expand-btn--wrapper">
             <button
               class="btn btn-primary btn-dark-hover search-results__expand-btn"
-              onclick="onExpandSearchResults()"
+              type="button"
             >
               Load More
             </button>
