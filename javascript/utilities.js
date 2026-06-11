@@ -1,3 +1,6 @@
+const themeLocalStorageKey = "theme";
+const themeDataAttribute = "data-theme";
+
 function animateCounter(
   element,
   target,
@@ -24,3 +27,20 @@ function animateCounter(
 
   window.requestAnimationFrame(step);
 }
+
+function toggleTheme() {
+  const currentTheme =
+    document.documentElement.getAttribute(themeDataAttribute);
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute(themeDataAttribute, newTheme);
+  localStorage.setItem(themeLocalStorageKey, newTheme);
+}
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem(themeLocalStorageKey);
+  if (savedTheme) {
+    document.documentElement.setAttribute(themeDataAttribute, savedTheme);
+  }
+}
+
+window.addEventListener("load", loadTheme);

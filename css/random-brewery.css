@@ -47,9 +47,6 @@
     .brewery__row {
         justify-content: center;
     }
-    .brewery__para {
-        line-height: 2rem;
-    }
 
     .brewery__button--refresh {
         margin-top: 0rem;

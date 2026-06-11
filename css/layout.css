@@ -7,12 +7,20 @@
 
 */
 :root {
-    --primary-color: #D88A1F;
-    --secondary-color: #3A2114;
-    --tertiary-color: #FFF7E8;
     --font-heading: 'Fraunces', serif;
     --font-body: 'Barlow', sans-serif;
     --animation-duration: 1s;
+    --primary-color: #D88A1F;
+
+    --color-scheme: light;    
+    --secondary-color: #3A2114;
+    --tertiary-color: #FFF7E8;   
+}
+
+[data-theme="dark"] {
+    --color-scheme: dark;
+    --secondary-color: #FFF7E8;
+    --tertiary-color: #3A2114;
 }
 
 * {
@@ -24,6 +32,7 @@
 
 body {
     background-color: var(--tertiary-color);
+    color-scheme: var(--color-scheme);
 }
 
 /* 
@@ -37,6 +46,9 @@ h3 {
     font-family: var(--font-heading);
 }
 
+.text-secondary {
+    color: var(--secondary-color);
+}
 .text-tertiary {
     color: var(--tertiary-color);
 }
@@ -131,6 +143,11 @@ nav {
     text-decoration: none;
 }
 
+.nav__theme-btn {
+    cursor: pointer;
+    font-size: 1.75rem;
+    color: var(--tertiary-color);
+}
 
 /* 
 

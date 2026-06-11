@@ -9,7 +9,7 @@ async function loadBrewery() {
 
   brewery = await getRandomBreweryApi();
 
-  const breweryTypeHtml = `<p class="brewery__para">Type: ${brewery.brewery_type}</p>`;
+  const breweryTypeHtml = `<p class="brewery__para text-secondary">Type: ${brewery.brewery_type}</p>`;
 
   const address = [
     brewery.street,
@@ -22,8 +22,8 @@ async function loadBrewery() {
     .join(", ");
   const addressHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-location-dot"></i> 
-      <p class="brewery__para">
+      <i class="fa-solid fa-location-dot text-secondary"></i> 
+      <p class="brewery__para text-secondary">
         ${address}
       </p>
     </div>
@@ -31,8 +31,8 @@ async function loadBrewery() {
 
   const phoneHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-phone"></i> 
-      <p class="brewery__para">
+      <i class="fa-solid fa-phone text-secondary"></i> 
+      <p class="brewery__para text-secondary">
         ${brewery.phone}
       </p>
     </div>
@@ -40,8 +40,8 @@ async function loadBrewery() {
 
   const websiteHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-earth-americas"></i> 
-      <p class="brewery__para">
+      <i class="fa-solid fa-earth-americas text-secondary"></i> 
+      <p class="brewery__para text-secondary">
         <a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>
       </p>
     </div>
@@ -49,7 +49,7 @@ async function loadBrewery() {
 
   breweryDescriptionElem.innerHTML = `  
     <div>
-      <h2>${brewery.name}</h2>
+      <h2 class="text-secondary">${brewery.name}</h2>
       ${brewery.brewery_type ? breweryTypeHtml : ""}
       ${addressHtml}
       ${brewery.phone ? phoneHtml : ""}
@@ -74,3 +74,5 @@ function displaySkeletonLoader() {
 
   mapElem.innerHTML = `<div class="skeleton skeleton-map"></div>`;
 }
+
+window.addEventListener("load", loadBrewery);
