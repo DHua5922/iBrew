@@ -23,7 +23,7 @@ async function loadBrewery() {
       .join(", ");
     const addressHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-location-dot text-secondary"></i> 
+      <i class="fa-solid fa-location-dot text-secondary" aria-hidden="true"></i>
       <p class="brewery__para text-secondary">
         ${address}
       </p>
@@ -32,7 +32,7 @@ async function loadBrewery() {
 
     const phoneHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-phone text-secondary"></i> 
+      <i class="fa-solid fa-phone text-secondary" aria-hidden="true"></i>
       <p class="brewery__para text-secondary">
         ${brewery.phone}
       </p>
@@ -41,9 +41,9 @@ async function loadBrewery() {
 
     const websiteHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-earth-americas text-secondary"></i> 
+      <i class="fa-solid fa-earth-americas text-secondary" aria-hidden="true"></i>
       <p class="brewery__para text-secondary">
-        <a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>
+        <a href="${brewery.website_url}" target="_blank" rel="noopener noreferrer">${brewery.website_url}</a>
       </p>
     </div>
   `;
@@ -63,8 +63,8 @@ async function loadBrewery() {
     breweryDescriptionElem.innerHTML = `<p class="brewery__message--error">Failed to load brewery. Please try again.</p>`;
     mapElem.innerHTML = `
       <span class="fa-stack fa-lg brewery__map--error">
-        <i class="fas fa-map fa-stack-1x"></i>
-        <i class="fas fa-ban fa-stack-2x" style="color: Tomato;"></i>
+        <i class="fas fa-map fa-stack-1x" aria-hidden="true"></i>
+        <i class="fas fa-ban fa-stack-2x" style="color: Tomato;" aria-hidden="true"></i>
       </span>
     `;
   }
@@ -76,11 +76,11 @@ async function loadBrewery() {
 function displaySkeletonLoader() {
   breweryDescriptionElem.innerHTML = `
     <div>
-        <div class="skeleton skeleton-title"></div>
-        <div class="skeleton skeleton-text"></div>
-        <div class="skeleton skeleton-text"></div>
-        <div class="skeleton skeleton-text"></div>
-        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-title" aria-hidden="true"></div>
+        <div class="skeleton skeleton-text" aria-hidden="true"></div>
+        <div class="skeleton skeleton-text" aria-hidden="true"></div>
+        <div class="skeleton skeleton-text" aria-hidden="true"></div>
+        <div class="skeleton skeleton-text" aria-hidden="true"></div>
     </div>
   `;
 

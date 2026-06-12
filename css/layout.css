@@ -35,6 +35,18 @@ body {
     color-scheme: var(--color-scheme);
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* 
 
      TYPOGRAPHY
@@ -78,6 +90,14 @@ h3 {
 }
 .link:hover::after {
     width: 100%;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
 }
 
 /* 
@@ -180,9 +200,11 @@ nav {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s ease-out;
+    visibility: hidden;
 }
 .nav__links--expandable.expanded {
     grid-template-rows: 1fr;
+    visibility: visible;
 }
 .nav__links--expandable-content {
     overflow: hidden;
@@ -265,6 +287,9 @@ footer {
     border: none;
     background-color: var(--tertiary-color);
     border-radius: 10px;
+    padding: 2rem;
+    padding-top: 4rem;
+    position: relative;
 }
 .modal:popover-open {
     opacity: 1;
@@ -274,6 +299,18 @@ footer {
     width: 100%;
     margin: auto;
 }
+
+.modal__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border: none;
+    background-color: transparent;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
 @starting-style {
     .modal:popover-open {
         opacity: 0;
@@ -432,5 +469,17 @@ because the nesting selector cannot represent pseudo-elements. */
 
     100% {
         background-position: -200% 0;
+    }
+}
+
+/* respects a user’s OS/browser accessibility setting for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }

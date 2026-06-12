@@ -55,12 +55,11 @@ function displaySearchResults(currentEndExpandIndex) {
 
     return `<li class="search-results__item--wrapper">
         <button class="search-results__item" data-brewery-id="${brewery.id}" popovertarget="brewery-dialog">
-            <div class="search-results__item--overlay">Click to view details</div>
+            <div class="search-results__item--overlay" aria-hidden="true">Click to view details</div>
             <h4 class="search-results__item--title">${brewery.name}</h4>
             ${brewery.brewery_type ? `<p class="search-results__item--para">Type: ${brewery.brewery_type}</p>` : ""}
             ${addressParts.length ? `<p class="search-results__item--para">${addressParts.join(", ")}</p>` : ""}
             ${brewery.phone ? `<p class="search-results__item--para">Phone: ${brewery.phone}</p>` : ""}
-            ${brewery.website_url ? `<p class="search-results__item--para"><a href="${brewery.website_url}" target="_blank">Visit Website</a></p>` : ""}
         </button>
     </li>`;
   };
@@ -110,7 +109,7 @@ function onClickBrewery(evt) {
     .join(", ");
   const addressHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-location-dot"></i> 
+      <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
       <p class="brewery__para">
         ${address}
       </p>
@@ -119,7 +118,7 @@ function onClickBrewery(evt) {
 
   const phoneHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-phone"></i> 
+      <i class="fa-solid fa-phone" aria-hidden="true"></i>
       <p class="brewery__para">
         ${chosenBrewery.phone}
       </p>
@@ -128,18 +127,22 @@ function onClickBrewery(evt) {
 
   const websiteHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-earth-americas"></i> 
+      <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
       <p class="brewery__para">
-        <a href="${chosenBrewery.website_url}" target="_blank">${chosenBrewery.website_url}</a>
+        <a href="${chosenBrewery.website_url}" target="_blank" rel="noopener noreferrer">${chosenBrewery.website_url}</a>
       </p>
     </div>
   `;
 
   document.querySelector(".modal").innerHTML = `
-    <div id="map"></div>
+    <button class="modal__close" type="button" aria-label="Close brewery details" autofocus>
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+
+    <div id="map" role="region" aria-label="Brewery location map"></div>
   
     <div class="brewery__details">
-      <h2>${chosenBrewery.name}</h2>
+      <h2 id="brewery-dialog-title">${chosenBrewery.name}</h2>
       ${chosenBrewery.brewery_type ? breweryTypeHtml : ""}
       ${addressHtml}
       ${chosenBrewery.phone ? phoneHtml : ""}
@@ -177,8 +180,8 @@ function onSortSearchResults(evt) {
 }
 
 function displaySkeletonLoader() {
-  const skeletonHtml = `<li class="search-results__item--wrapper animate-pop-in">
-        <button class="search-results__item">
+  const skeletonHtml = `<li class="search-results__item--wrapper animate-pop-in" aria-hidden="true">
+        <button class="search-results__item" disabled>
           <div class="skeleton skeleton-title"></div>
           <div class="skeleton skeleton-text"></div>
           <div class="skeleton skeleton-text"></div>
@@ -213,6 +216,12 @@ function bindSearchEvents() {
   breweryListElem?.addEventListener("click", (evt) => {
     if (evt.target.closest(".search-results__item")) {
       onClickBrewery(evt);
+    }
+  });
+
+  document.querySelector(".modal")?.addEventListener("click", (evt) => {
+    if (evt.target.closest(".modal__close")) {
+      document.querySelector(".modal")?.hidePopover();
     }
   });
 }

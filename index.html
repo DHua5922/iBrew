@@ -22,9 +22,9 @@
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav>
+    <nav aria-label="Primary navigation">
       <div class="nav__row">
-        <a href="index.html">
+        <a href="index.html" aria-label="iBrew home">
           <figure class="nav__logo--wrapper animate-slide-in-left">
             <img src="./assets/logo.png" alt="iBrew Logo" class="nav__logo" />
           </figure>
@@ -33,7 +33,7 @@
         <!-- Navigation Links -->
         <ul class="nav__links align-items-center animate-slide-in-right">
           <li>
-            <a href="index.html" class="link text-tertiary">Home</a>
+            <a href="index.html" class="link text-tertiary" aria-current="page">Home</a>
           </li>
           <li>
             <a href="random-brewery.html" class="link text-tertiary"
@@ -41,9 +41,15 @@
             >
           </li>
           <li>
-            <button class="btn-transparent js-theme-toggle" type="button">
+            <button
+              class="btn-transparent js-theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              aria-pressed="false"
+            >
               <i
                 class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+                aria-hidden="true"
               ></i>
             </button>
           </li>
@@ -59,16 +65,19 @@
         <button
           class="btn-transparent nav__menu-btn"
           type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-navigation"
         >
-          <i class="fa-solid fa-bars animate-slide-in-right"></i>
+          <i class="fa-solid fa-bars animate-slide-in-right" aria-hidden="true"></i>
         </button>
       </div>
 
       <!-- Collapsible Navigation Links -->
-      <div class="nav__links--expandable">
+      <div class="nav__links--expandable" id="mobile-navigation">
         <ul class="nav__links--expandable-content">
           <li>
-            <a href="index.html" class="link text-tertiary">Home</a>
+            <a href="index.html" class="link text-tertiary" aria-current="page">Home</a>
           </li>
           <li>
             <a href="random-brewery.html" class="link text-tertiary"
@@ -76,9 +85,15 @@
             >
           </li>
           <li>
-            <button class="btn-transparent js-theme-toggle" type="button">
+            <button
+              class="btn-transparent js-theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              aria-pressed="false"
+            >
               <i
                 class="text-tertiary fa-solid fa-circle-half-stroke nav__theme-btn"
+                aria-hidden="true"
               ></i>
             </button>
           </li>
@@ -118,7 +133,7 @@
           </div>
 
           <figure class="landing__image--wrapper animate-slide-in-right">
-            <img src="./assets/hero-image.png" alt="Hero Image" class="img" />
+            <img src="./assets/hero-image.png" alt="" class="img" />
           </figure>
         </div>
       </section>
@@ -131,7 +146,7 @@
           >
             <img
               src="./assets/landing-image.png"
-              alt="Hero Image"
+              alt=""
               class="img"
             />
           </figure>
@@ -162,9 +177,9 @@
     <!-- Footer -->
     <footer>
       <div class="footer__wrapper animate-pop-in">
-        <a href="index.html">
+        <a href="index.html" aria-label="iBrew home">
           <figure class="footer__logo--wrapper">
-            <img src="./assets/logo.png" alt="iBrew Logo" class="img" />
+            <img src="./assets/logo.png" alt="" class="img" />
           </figure>
         </a>
 
@@ -189,6 +204,7 @@
             class="text-tertiary"
             href="https://www.huadylan.com"
             target="_blank"
+            rel="noopener noreferrer"
             >Dylan Hua</a
           >
         </p>
