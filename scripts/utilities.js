@@ -34,6 +34,7 @@ function toggleTheme() {
   const newTheme = currentTheme === "dark" ? "light" : "dark";
   document.documentElement.setAttribute(themeDataAttribute, newTheme);
   localStorage.setItem(themeLocalStorageKey, newTheme);
+  updateThemeToggleState(newTheme);
 }
 
 function loadTheme() {
@@ -41,11 +42,36 @@ function loadTheme() {
   if (savedTheme) {
     document.documentElement.setAttribute(themeDataAttribute, savedTheme);
   }
+
+  updateThemeToggleState(savedTheme);
+}
+
+function updateThemeToggleState(theme) {
+  const isDarkTheme = theme === "dark";
+
+  document.querySelectorAll(".js-theme-toggle").forEach((button) => {
+    button.setAttribute("aria-pressed", String(isDarkTheme));
+    button.setAttribute(
+      "aria-label",
+      isDarkTheme ? "Switch to light mode" : "Switch to dark mode",
+    );
+  });
 }
 
 function onExpandNavMenu() {
   const navLinks = document.querySelector(".nav__links--expandable");
+  const navMenuButton = document.querySelector(".nav__menu-btn");
+
+  if (!navLinks) return;
+
   navLinks.classList.toggle("expanded");
+
+  const isExpanded = navLinks.classList.contains("expanded");
+  navMenuButton?.setAttribute("aria-expanded", String(isExpanded));
+  navMenuButton?.setAttribute(
+    "aria-label",
+    isExpanded ? "Close navigation menu" : "Open navigation menu",
+  );
 }
 
 function collapseExpandedNavbarOnDesktop() {
@@ -55,6 +81,10 @@ function collapseExpandedNavbarOnDesktop() {
 
   if (window.innerWidth > 768) {
     navLinks.classList.remove("expanded");
+    const navMenuButton = document.querySelector(".nav__menu-btn");
+
+    navMenuButton?.setAttribute("aria-expanded", "false");
+    navMenuButton?.setAttribute("aria-label", "Open navigation menu");
   }
 }
 
