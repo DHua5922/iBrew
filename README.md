@@ -57,4 +57,4 @@ Open `index.html` directly in a browser.
 
 ## Notes
 
-The project currently uses a Google Maps API key in `scripts/map.js`. In production, the key should be restricted by domain and API scope in Google Cloud.
+This project uses a browser-side Google Maps API key for map rendering. The key is restricted in Google Cloud to the deployed iBrew domain and localhost development, and its API access is scoped to the Maps JavaScript APIs used by this project.
