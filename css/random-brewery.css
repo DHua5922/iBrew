@@ -34,11 +34,11 @@
 
 .brewery__map--error {
     font-size: 5rem;
-    color: var(--secondary-color);
+    color: var(--dark-color);
 }
 .brewery__message--error {
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--dark-color);
     font-size: 2rem;
     font-weight: bold;
 }
