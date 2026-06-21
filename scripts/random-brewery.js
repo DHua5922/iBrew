@@ -10,7 +10,7 @@ async function loadBrewery() {
   try {
     brewery = await getRandomBreweryApi();
 
-    const breweryTypeHtml = `<p class="brewery__para text-secondary">Type: ${brewery.brewery_type}</p>`;
+    const breweryTypeHtml = `<p class="brewery__para text-dark">Type: ${brewery.brewery_type}</p>`;
 
     const address = [
       brewery.street,
@@ -23,8 +23,8 @@ async function loadBrewery() {
       .join(", ");
     const addressHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-location-dot text-secondary" aria-hidden="true"></i>
-      <p class="brewery__para text-secondary">
+      <i class="fa-solid fa-location-dot text-dark" aria-hidden="true"></i>
+      <p class="brewery__para text-dark">
         ${address}
       </p>
     </div>
@@ -32,8 +32,8 @@ async function loadBrewery() {
 
     const phoneHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-phone text-secondary" aria-hidden="true"></i>
-      <p class="brewery__para text-secondary">
+      <i class="fa-solid fa-phone text-dark" aria-hidden="true"></i>
+      <p class="brewery__para text-dark">
         ${brewery.phone}
       </p>
     </div>
@@ -41,16 +41,16 @@ async function loadBrewery() {
 
     const websiteHtml = `
     <div class="row align-items-center brewery__row">
-      <i class="fa-solid fa-earth-americas text-secondary" aria-hidden="true"></i>
-      <p class="brewery__para text-secondary">
-        <a href="${brewery.website_url}" target="_blank" rel="noopener noreferrer">${brewery.website_url}</a>
+      <i class="fa-solid fa-earth-americas text-dark" aria-hidden="true"></i>
+      <p class="brewery__para text-dark">
+        <a class="dark-outline-on-focus" href="${brewery.website_url}" target="_blank" rel="noopener noreferrer">${brewery.website_url}</a>
       </p>
     </div>
   `;
 
     breweryDescriptionElem.innerHTML = `  
       <div>
-        <h2 class="text-secondary">${brewery.name}</h2>
+        <h2 class="text-dark">${brewery.name}</h2>
         ${brewery.brewery_type ? breweryTypeHtml : ""}
         ${addressHtml}
         ${brewery.phone ? phoneHtml : ""}

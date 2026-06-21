@@ -129,13 +129,13 @@ function onClickBrewery(evt) {
     <div class="row align-items-center brewery__row">
       <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
       <p class="brewery__para">
-        <a href="${chosenBrewery.website_url}" target="_blank" rel="noopener noreferrer">${chosenBrewery.website_url}</a>
+        <a class="dark-outline-on-focus" href="${chosenBrewery.website_url}" target="_blank" rel="noopener noreferrer">${chosenBrewery.website_url}</a>
       </p>
     </div>
   `;
 
   document.querySelector(".modal").innerHTML = `
-    <button class="modal__close" type="button" aria-label="Close brewery details" autofocus>
+    <button class="modal__close-btn" type="button" aria-label="Close brewery details" autofocus>
       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
     </button>
 
@@ -220,7 +220,7 @@ function bindSearchEvents() {
   });
 
   document.querySelector(".modal")?.addEventListener("click", (evt) => {
-    if (evt.target.closest(".modal__close")) {
+    if (evt.target.closest(".modal__close-btn")) {
       document.querySelector(".modal")?.hidePopover();
     }
   });
