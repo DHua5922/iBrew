@@ -7,7 +7,7 @@
     max-width: 500px;
     margin: 0 auto;
     width: 100%;
-    animation: rotateIn 1s ease-in-out;
+    animation: popIn 1s ease-in-out;
 }
 
 .search__title {

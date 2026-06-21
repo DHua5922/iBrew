@@ -303,13 +303,6 @@ footer {
     font-size: 1.5rem;
 }
 
-@starting-style {
-    .modal:popover-open {
-        opacity: 0;
-        transform: translateY(-50%) scaleY(0);
-    }
-}
-
 .modal::backdrop {
     transition: background-color 0.5s ease-in-out;
 }
@@ -319,6 +312,11 @@ footer {
 /* This starting-style rule cannot be nested inside the above selector
 because the nesting selector cannot represent pseudo-elements. */
 @starting-style {
+    .modal:popover-open {
+        opacity: 0;
+        transform: translateY(-50%) scaleY(0);
+    }
+
     .modal:popover-open::backdrop {
         background-color: transparent; 
     }
@@ -332,9 +330,6 @@ because the nesting selector cannot represent pseudo-elements. */
 .animate-pop-in {
     animation: popIn var(--animation-duration) ease-in-out;
 }
-.animate-pop-out {
-    animation: popOut var(--animation-duration) ease-in-out;
-}
 
 .animate-slide-in-left {
     animation: slideInFromLeft var(--animation-duration) ease-in-out;
@@ -342,10 +337,6 @@ because the nesting selector cannot represent pseudo-elements. */
 
 .animate-slide-in-right {
     animation: slideInFromRight var(--animation-duration) ease-in-out;
-}
-
-.rotate-in {
-    animation: rotateIn var(--animation-duration) ease-in-out;
 }
 
 .animate-slide-in-left-on-scroll-in {
@@ -406,18 +397,6 @@ because the nesting selector cannot represent pseudo-elements. */
     to {
         opacity: 1;
         transform: translateX(0);
-    }
-}
-
-@keyframes rotateIn {
-    from {
-        opacity: 0;
-        transform: rotate(0);
-    }
-
-    to {
-        opacity: 1;
-        transform: rotate(360deg);
     }
 }
 
