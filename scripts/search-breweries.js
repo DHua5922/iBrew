@@ -11,7 +11,8 @@ const searchResultsWrapperElem = document.querySelector(
   ".search-results__wrapper",
 );
 const breweryDialogElem = document.querySelector("#brewery-dialog");
-let activeBreweryTrigger = null;
+
+window.addEventListener("DOMContentLoaded", bindSearchEvents);
 
 async function onSearchBreweries(evt) {
   evt.preventDefault();
@@ -95,13 +96,10 @@ function displaySearchResults(currentEndExpandIndex) {
 
 function onClickBrewery(evt) {
   const breweryItem = evt.target.closest(".search-results__item");
-  if (!breweryItem || !breweryDialogElem) return;
 
   const breweryId = breweryItem.getAttribute("data-brewery-id");
   chosenBrewery = breweryList.find((brewery) => brewery.id === breweryId);
   if (!chosenBrewery) return;
-
-  activeBreweryTrigger = breweryItem;
 
   const breweryTypeHtml = `<p class="brewery__para">Type: ${chosenBrewery.brewery_type}</p>`;
 
@@ -232,11 +230,4 @@ function bindSearchEvents() {
       breweryDialogElem.close();
     }
   });
-
-  breweryDialogElem?.addEventListener("close", () => {
-    activeBreweryTrigger?.focus();
-    activeBreweryTrigger = null;
-  });
 }
-
-window.addEventListener("DOMContentLoaded", bindSearchEvents);
