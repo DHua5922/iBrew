@@ -10,6 +10,9 @@ const searchResultsExpandBtnWrapper = document.querySelector(
 const searchResultsWrapperElem = document.querySelector(
   ".search-results__wrapper",
 );
+const breweryDialogElem = document.querySelector("#brewery-dialog");
+
+window.addEventListener("DOMContentLoaded", bindSearchEvents);
 
 async function onSearchBreweries(evt) {
   evt.preventDefault();
@@ -54,7 +57,7 @@ function displaySearchResults(currentEndExpandIndex) {
     ].filter(Boolean);
 
     return `<li class="search-results__item--wrapper">
-        <button class="search-results__item" data-brewery-id="${brewery.id}" popovertarget="brewery-dialog">
+        <button class="search-results__item" data-brewery-id="${brewery.id}">
             <div class="search-results__item--overlay" aria-hidden="true">Click to view details</div>
             <h4 class="search-results__item--title">${brewery.name}</h4>
             ${brewery.brewery_type ? `<p class="search-results__item--para">Type: ${brewery.brewery_type}</p>` : ""}
@@ -93,8 +96,10 @@ function displaySearchResults(currentEndExpandIndex) {
 
 function onClickBrewery(evt) {
   const breweryItem = evt.target.closest(".search-results__item");
+
   const breweryId = breweryItem.getAttribute("data-brewery-id");
   chosenBrewery = breweryList.find((brewery) => brewery.id === breweryId);
+  if (!chosenBrewery) return;
 
   const breweryTypeHtml = `<p class="brewery__para">Type: ${chosenBrewery.brewery_type}</p>`;
 
@@ -134,7 +139,7 @@ function onClickBrewery(evt) {
     </div>
   `;
 
-  document.querySelector(".modal").innerHTML = `
+  breweryDialogElem.innerHTML = `
     <button class="modal__close-btn" type="button" aria-label="Close brewery details" autofocus>
       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
     </button>
@@ -150,6 +155,7 @@ function onClickBrewery(evt) {
     </div>
   `;
 
+  breweryDialogElem.showModal();
   initMap(chosenBrewery);
 }
 
@@ -219,11 +225,9 @@ function bindSearchEvents() {
     }
   });
 
-  document.querySelector(".modal")?.addEventListener("click", (evt) => {
+  breweryDialogElem?.addEventListener("click", (evt) => {
     if (evt.target.closest(".modal__close-btn")) {
-      document.querySelector(".modal")?.hidePopover();
+      breweryDialogElem.close();
     }
   });
 }
-
-window.addEventListener("DOMContentLoaded", bindSearchEvents);

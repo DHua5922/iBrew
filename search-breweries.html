@@ -68,8 +68,7 @@
             <button
               class="btn-transparent nav__theme-toggle-btn light-outline-on-focus"
               type="button"
-              aria-label="Toggle dark mode"
-              aria-pressed="false"
+              aria-label="Toggle light/dark theme"
             >
               <i
                 class="text-light fa-solid fa-circle-half-stroke nav__theme-btn"
@@ -80,7 +79,7 @@
         </ul>
 
         <button
-          class="btn-transparent nav__menu-btn"
+          class="btn-transparent nav__menu-btn light-outline-on-focus"
           type="button"
           aria-label="Open navigation menu"
           aria-expanded="false"
@@ -106,25 +105,26 @@
               >Random Brewery</a
             >
           </li>
-          <li>
-            <button
-              class="btn-transparent nav__theme-toggle-btn light-outline-on-focus"
-              type="button"
-              aria-label="Toggle dark mode"
-              aria-pressed="false"
-            >
-              <i
-                class="text-light fa-solid fa-circle-half-stroke nav__theme-btn"
-                aria-hidden="true"
-              ></i>
-            </button>
-          </li>
+
           <li>
             <a
               href="search-breweries.html"
               class="link--primary btn btn-light-primary btn-light-primary-hover text-light"
               >Find Breweries</a
             >
+          </li>
+
+          <li>
+            <button
+              class="btn-transparent nav__theme-toggle-btn light-outline-on-focus"
+              type="button"
+              aria-label="Toggle light/dark theme"
+            >
+              <i
+                class="text-light fa-solid fa-circle-half-stroke nav__theme-btn"
+                aria-hidden="true"
+              ></i>
+            </button>
           </li>
         </ul>
       </div>
@@ -134,7 +134,6 @@
     <dialog
       id="brewery-dialog"
       class="modal"
-      popover
       autofocus
       aria-labelledby="brewery-dialog-title"
     ></dialog>
@@ -170,7 +169,9 @@
             <h3
               class="search-results-filter__count animate-slide-in-left text-dark"
               aria-live="polite"
-            ></h3>
+            >
+              Search Results
+            </h3>
             <label class="sr-only" for="search-results-sort"
               >Sort search results</label
             >

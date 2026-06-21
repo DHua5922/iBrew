@@ -4,7 +4,6 @@ const themeToggleBtnElem = document.querySelectorAll(".nav__theme-toggle-btn");
 
 window.addEventListener("DOMContentLoaded", () => {
   loadTheme();
-  collapseExpandedNavbarOnDesktop();
 
   themeToggleBtnElem.forEach((button) => {
     button.addEventListener("click", toggleTheme);
@@ -14,7 +13,6 @@ window.addEventListener("DOMContentLoaded", () => {
     .querySelector(".nav__menu-btn")
     ?.addEventListener("click", onExpandNavMenu);
 });
-window.addEventListener("resize", collapseExpandedNavbarOnDesktop);
 
 function animateCounter(
   element,
@@ -88,18 +86,4 @@ function onExpandNavMenu() {
     "aria-label",
     isExpanded ? "Close navigation menu" : "Open navigation menu",
   );
-}
-
-function collapseExpandedNavbarOnDesktop() {
-  const navLinks = document.querySelector(".nav__links--expandable");
-
-  if (!navLinks) return;
-
-  if (window.innerWidth > 768) {
-    navLinks.classList.remove("expanded");
-    const navMenuButton = document.querySelector(".nav__menu-btn");
-
-    navMenuButton?.setAttribute("aria-expanded", "false");
-    navMenuButton?.setAttribute("aria-label", "Open navigation menu");
-  }
 }
