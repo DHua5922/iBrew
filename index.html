@@ -9,7 +9,15 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/layout.css" />
@@ -22,6 +30,7 @@
     <script
       src="https://kit.fontawesome.com/8700864f26.js"
       crossorigin="anonymous"
+      defer
     ></script>
   </head>
   <body>
@@ -30,7 +39,11 @@
       <div class="nav__row">
         <a href="index.html" aria-label="iBrew home">
           <figure class="nav__logo--wrapper animate-slide-in-left">
-            <img src="./assets/logo.png" alt="iBrew Logo" class="nav__logo" />
+            <img
+              src="./assets/images/brand/logo.svg"
+              alt="iBrew Logo"
+              class="nav__logo"
+            />
           </figure>
         </a>
 
@@ -145,7 +158,41 @@
           </div>
 
           <figure class="landing__image--wrapper animate-slide-in-right">
-            <img src="./assets/hero-image.png" alt="" class="img" />
+            <picture>
+              <source
+                srcset="
+                  ./assets/images/home/hero/hero-image-400.avif   400w,
+                  ./assets/images/home/hero/hero-image-800.avif   800w,
+                  ./assets/images/home/hero/hero-image-1000.avif 1000w
+                "
+                sizes="(max-width: 768px) calc(100vw - 4rem), calc((min(100vw, 1200px) - 11rem) / 2)"
+                type="image/avif"
+              />
+              <source
+                srcset="
+                  ./assets/images/home/hero/hero-image-400.webp   400w,
+                  ./assets/images/home/hero/hero-image-800.webp   800w,
+                  ./assets/images/home/hero/hero-image-1000.webp 1000w
+                "
+                sizes="(max-width: 768px) calc(100vw - 4rem), calc((min(100vw, 1200px) - 11rem) / 2)"
+                type="image/webp"
+              />
+              <img
+                src="./assets/images/home/hero/hero-image-1000.png"
+                srcset="
+                  ./assets/images/home/hero/hero-image-400.png   400w,
+                  ./assets/images/home/hero/hero-image-800.png   800w,
+                  ./assets/images/home/hero/hero-image-1000.png 1000w
+                "
+                sizes="(max-width: 768px) calc(100vw - 4rem), calc((min(100vw, 1200px) - 11rem) / 2)"
+                alt=""
+                class="img"
+                width="1000"
+                height="1000"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </div>
       </section>
@@ -156,7 +203,38 @@
           <figure
             class="landing__image--wrapper animate-slide-in-left-on-scroll-in"
           >
-            <img src="./assets/landing-image.png" alt="" class="img" />
+            <picture>
+              <source
+                srcset="
+                  ./assets/images/home/landing/landing-image-400.avif 400w,
+                  ./assets/images/home/landing/landing-image-800.avif 800w
+                "
+                sizes="(max-width: 768px) calc(100vw - 4rem), calc((min(100vw, 1200px) - 11rem) / 2)"
+                type="image/avif"
+              />
+              <source
+                srcset="
+                  ./assets/images/home/landing/landing-image-400.webp 400w,
+                  ./assets/images/home/landing/landing-image-800.webp 800w
+                "
+                sizes="(max-width: 768px) calc(100vw - 4rem), calc((min(100vw, 1200px) - 11rem) / 2)"
+                type="image/webp"
+              />
+              <img
+                src="./assets/images/home/landing/landing-image-775.png"
+                srcset="
+                  ./assets/images/home/landing/landing-image-400.png 400w,
+                  ./assets/images/home/landing/landing-image-800.png 800w
+                "
+                sizes="(max-width: 768px) calc(100vw - 4rem), calc((min(100vw, 1200px) - 11rem) / 2)"
+                alt=""
+                class="img"
+                width="775"
+                height="436"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
 
           <div class="landing__description animate-slide-in-right-on-scroll-in">
@@ -187,7 +265,7 @@
       <div class="footer__wrapper animate-pop-in">
         <a href="index.html" aria-label="iBrew home">
           <figure class="footer__logo--wrapper">
-            <img src="./assets/logo.png" alt="" class="img" />
+            <img src="./assets/images/brand/logo.svg" alt="" class="img" />
           </figure>
         </a>
 

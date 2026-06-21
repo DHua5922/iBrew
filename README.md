@@ -24,6 +24,8 @@ I built this project as a front-end portfolio piece focused on practical product
 - Handled missing brewery fields with conditional rendering
 - Used event delegation for dynamically rendered search result cards
 - Followed BEM-style CSS naming for readable component-level styling
+- Optimized landing page artwork with responsive AVIF/WebP sources and PNG fallbacks
+- Organized production assets by purpose, page, and image family for easier maintenance
 
 ## Accessibility
 
@@ -52,7 +54,6 @@ Open `index.html` directly in a browser.
 
 - Add automated accessibility checks with axe and continue validating overall page quality with Chrome Lighthouse
 - Add pagination if the API response strategy expands beyond the current pattern for loading more
-- Improve image performance by lazy loading below-the-fold images, adding image dimensions to reduce layout shift, and using async decoding where appropriate
 - Replace larger `innerHTML` template strings with DOM-building helpers or small rendering utilities to improve maintainability and reduce HTML injection risk
 
 ## Notes
