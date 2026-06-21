@@ -1,5 +1,20 @@
 const themeLocalStorageKey = "theme";
 const themeDataAttribute = "data-theme";
+const themeToggleBtnElem = document.querySelectorAll(".nav__theme-toggle-btn");
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadTheme();
+  collapseExpandedNavbarOnDesktop();
+
+  themeToggleBtnElem.forEach((button) => {
+    button.addEventListener("click", toggleTheme);
+  });
+
+  document
+    .querySelector(".nav__menu-btn")
+    ?.addEventListener("click", onExpandNavMenu);
+});
+window.addEventListener("resize", collapseExpandedNavbarOnDesktop);
 
 function animateCounter(
   element,
@@ -32,6 +47,7 @@ function toggleTheme() {
   const currentTheme =
     document.documentElement.getAttribute(themeDataAttribute);
   const newTheme = currentTheme === "dark" ? "light" : "dark";
+
   document.documentElement.setAttribute(themeDataAttribute, newTheme);
   localStorage.setItem(themeLocalStorageKey, newTheme);
   updateThemeToggleState(newTheme);
@@ -49,7 +65,7 @@ function loadTheme() {
 function updateThemeToggleState(theme) {
   const isDarkTheme = theme === "dark";
 
-  document.querySelectorAll(".js-theme-toggle").forEach((button) => {
+  themeToggleBtnElem.forEach((button) => {
     button.setAttribute("aria-pressed", String(isDarkTheme));
     button.setAttribute(
       "aria-label",
@@ -87,20 +103,3 @@ function collapseExpandedNavbarOnDesktop() {
     navMenuButton?.setAttribute("aria-label", "Open navigation menu");
   }
 }
-
-function bindLayoutEvents() {
-  document
-    .querySelectorAll(".js-theme-toggle")
-    .forEach((button) => button.addEventListener("click", toggleTheme));
-
-  document
-    .querySelector(".nav__menu-btn")
-    ?.addEventListener("click", onExpandNavMenu);
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  loadTheme();
-  bindLayoutEvents();
-  collapseExpandedNavbarOnDesktop();
-});
-window.addEventListener("resize", collapseExpandedNavbarOnDesktop);
