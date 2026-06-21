@@ -79,9 +79,7 @@ nav {
     display: flex;
     gap: 3rem;
 }
-.nav__links.animate-slide-in-right {
-    animation-name: slideInFromRightOpaque;
-}
+
 .nav__links--expandable {
     display: none;
     grid-template-rows: 0fr;
@@ -116,21 +114,10 @@ nav {
     cursor: pointer;
 }
 
-@keyframes slideInFromRightOpaque {
-    from {
-        transform: translateX(100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
-
 @media (max-width: 768px) {
     .nav__row .nav__links {
         position: absolute;
         transform-origin: right center;
-        animation: popOut var(--animation-duration) ease-in-out forwards;
         display: none;
     }
 
