@@ -33,16 +33,23 @@
         <!-- Navigation Links -->
         <ul class="nav__links align-items-center animate-slide-in-right">
           <li>
-            <a href="index.html" class="link text-tertiary">Home</a>
+            <a href="index.html" class="link text-tertiary" aria-current="page"
+              >Home</a
+            >
           </li>
           <li>
-            <a
-              href="random-brewery.html"
-              class="link text-tertiary"
-              aria-current="page"
+            <a href="random-brewery.html" class="link text-tertiary"
               >Random Brewery</a
             >
           </li>
+          <li>
+            <a
+              href="search-breweries.html"
+              class="link--primary btn btn-light-primary btn-light-primary-hover text-tertiary"
+              >Find Breweries</a
+            >
+          </li>
+
           <li>
             <button
               class="btn-transparent js-theme-toggle"
@@ -55,13 +62,6 @@
                 aria-hidden="true"
               ></i>
             </button>
-          </li>
-          <li>
-            <a
-              href="search-breweries.html"
-              class="link--primary btn btn-primary btn-primary-hover text-tertiary"
-              >Find Breweries</a
-            >
           </li>
         </ul>
 
@@ -72,7 +72,10 @@
           aria-expanded="false"
           aria-controls="mobile-navigation"
         >
-          <i class="fa-solid fa-bars animate-slide-in-right" aria-hidden="true"></i>
+          <i
+            class="fa-solid fa-bars animate-slide-in-right"
+            aria-hidden="true"
+          ></i>
         </button>
       </div>
 
@@ -80,13 +83,12 @@
       <div class="nav__links--expandable" id="mobile-navigation">
         <ul class="nav__links--expandable-content">
           <li>
-            <a href="index.html" class="link text-tertiary">Home</a>
+            <a href="index.html" class="link text-tertiary" aria-current="page"
+              >Home</a
+            >
           </li>
           <li>
-            <a
-              href="random-brewery.html"
-              class="link text-tertiary"
-              aria-current="page"
+            <a href="random-brewery.html" class="link text-tertiary"
               >Random Brewery</a
             >
           </li>
@@ -106,7 +108,7 @@
           <li>
             <a
               href="search-breweries.html"
-              class="link--primary btn btn-primary btn-primary-hover text-tertiary"
+              class="link--primary btn btn-light-primary btn-light-primary-hover text-tertiary"
               >Find Breweries</a
             >
           </li>
@@ -135,7 +137,7 @@
         </div>
 
         <button
-          class="brewery__button--refresh btn btn-primary animate-pop-in text-secondary"
+          class="brewery__button--refresh btn btn-dark-primary btn-dark-primary-hover animate-pop-in text-secondary"
           type="button"
         >
           Give Me Another Brewery
