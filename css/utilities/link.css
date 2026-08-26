@@ -15,10 +15,6 @@
     position: relative;
 }
 
-.link:focus {
-    outline: none;
-}
-
 .link::after {
     content: "";
     position: absolute;
@@ -31,6 +27,6 @@
 }
 
 .link:hover::after,
-.link:focus::after {
+.link:focus-visible::after {
     width: 100%;
 }

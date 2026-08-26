@@ -28,9 +28,8 @@
     font-size: 1.5rem;
 }
 
-.modal__close-btn:focus {
-    outline: 1px solid var(--dark-color);
-    outline-offset: 2px;
+.modal__close-btn:focus-visible {
+    outline-color: var(--dark-color);
 }
 
 .modal::backdrop {

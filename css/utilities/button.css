@@ -17,8 +17,8 @@
     color: var(--light-color);
 }
 
-.btn-dark-primary:focus {
-    outline: 1px solid var(--dark-color);
+.btn-dark-primary:focus-visible {
+    outline-color: var(--dark-color);
 }
 
 .btn-light-primary {
@@ -26,11 +26,11 @@
     color: var(--dark-color);
 }
 
-.btn-light-primary:focus {
-    outline: 1px solid var(--light-color);
+.btn-light-primary:focus-visible {
+    outline-color: var(--light-color);
 }
 
-.btn-dark-primary:focus,
-.btn-light-primary:focus {
-    outline-offset: 6px;
+.btn-dark-primary:focus-visible,
+.btn-light-primary:focus-visible {
+    outline-offset: 4px;
 }

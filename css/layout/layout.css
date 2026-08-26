@@ -36,9 +36,9 @@ li {
     list-style-type: none;
 }
 
-input:focus,
-select:focus {
-    outline: 1px solid var(--dark-color);
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 3px solid var(--dark-color);
+    outline-offset: 3px;
 }
 
 h1,

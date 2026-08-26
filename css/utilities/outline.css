@@ -1,14 +1,14 @@
-.dark-outline-on-focus:focus {
+.dark-outline-on-focus:focus-visible {
     outline-color: var(--dark-color);
 }
 
-.light-outline-on-focus:focus {
+.light-outline-on-focus:focus-visible {
     outline-color: var(--light-color);
 }
 
-.dark-outline-on-focus:focus,
-.light-outline-on-focus:focus {
-    outline-width: 2px;
+.dark-outline-on-focus:focus-visible,
+.light-outline-on-focus:focus-visible {
+    outline-width: 3px;
     outline-style: solid;
-    outline-offset: 2px;
+    outline-offset: 3px;
 }
