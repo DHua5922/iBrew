@@ -32,6 +32,7 @@ I built this project as a front-end portfolio piece focused on practical product
 ## Accessibility
 
 - Added semantic HTML landmarks and accessible navigation labels
+- Added keyboard-accessible skip links that move focus past repeated navigation
 - Added labels for form controls, including visually hidden labels where the visual design uses icons
 - Added `aria-current`, `aria-live`, `aria-expanded`, and `aria-pressed` where they describe real UI state
 - Marked decorative images and icons as hidden from assistive technology
