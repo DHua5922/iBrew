@@ -1,0 +1,48 @@
+:root {
+    --font-heading: "Fraunces", serif;
+    --font-body: "Barlow", sans-serif;
+    --animation-duration: 1s;
+
+    --color-scheme: light;
+    --dark-color: #3a2114;
+    --light-color: #fff7e8;
+}
+
+[data-theme="dark"] {
+    --color-scheme: dark;
+    --dark-color: #fff7e8;
+    --light-color: #3a2114;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+body {
+    background-color: var(--light-color);
+    color-scheme: var(--color-scheme);
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+li {
+    list-style-type: none;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 3px solid var(--dark-color);
+    outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+}

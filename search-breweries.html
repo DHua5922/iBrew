@@ -11,10 +11,34 @@
     <!-- Favicon -->
     <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- CSS -->
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/utilities.css" />
-    <link rel="stylesheet" href="css/search-breweries.css" />
+    <!-- Shared layout -->
+    <link rel="stylesheet" href="css/layout/layout.css" />
+    <link rel="stylesheet" href="css/layout/navbar.css" />
+    <link rel="stylesheet" href="css/layout/footer.css" />
+
+    <!-- Shared utilities -->
+    <link rel="stylesheet" href="css/utilities/layout.css" />
+    <link rel="stylesheet" href="css/utilities/outline.css" />
+    <link rel="stylesheet" href="css/utilities/link.css" />
+    <link rel="stylesheet" href="css/utilities/button.css" />
+    <link rel="stylesheet" href="css/utilities/modal.css" />
+    <link rel="stylesheet" href="css/utilities/animation.css" />
+    <link rel="stylesheet" href="css/utilities/skeleton.css" />
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="css/search-breweries/layout.css" />
+    <link rel="stylesheet" href="css/search-breweries/filter.css" />
+    <link rel="stylesheet" href="css/search-breweries/search-results.css" />
+    <link rel="stylesheet" href="css/search-breweries/brewery.css" />
 
     <!-- Browser tab title -->
     <title>iBrew - Find Breweries</title>
@@ -47,9 +71,7 @@
         <!-- Navigation Links -->
         <ul class="nav__links align-items-center animate-slide-in-right">
           <li>
-            <a href="index.html" class="link text-light" aria-current="page"
-              >Home</a
-            >
+            <a href="index.html" class="link text-light">Home</a>
           </li>
           <li>
             <a href="random-brewery.html" class="link text-light"
@@ -60,6 +82,7 @@
             <a
               href="search-breweries.html"
               class="link--primary btn btn-light-primary btn-light-primary-hover text-light"
+              aria-current="page"
               >Find Breweries</a
             >
           </li>
@@ -96,9 +119,7 @@
       <div class="nav__links--expandable" id="mobile-navigation">
         <ul class="nav__links--expandable-content">
           <li>
-            <a href="index.html" class="link text-light" aria-current="page"
-              >Home</a
-            >
+            <a href="index.html" class="link text-light">Home</a>
           </li>
           <li>
             <a href="random-brewery.html" class="link text-light"
@@ -110,6 +131,7 @@
             <a
               href="search-breweries.html"
               class="link--primary btn btn-light-primary btn-light-primary-hover text-light"
+              aria-current="page"
               >Find Breweries</a
             >
           </li>
@@ -242,8 +264,12 @@
 
     <!-- Scripts -->
     <script src="scripts/api/brewery.js"></script>
-    <script src="scripts/utilities.js"></script>
-    <script src="scripts/search-breweries.js"></script>
+    <script src="scripts/navbar.js"></script>
+    <script src="scripts/theme.js"></script>
+    <script
+      type="module"
+      src="scripts/search-breweries/search-breweries.js"
+    ></script>
     <script src="scripts/map.js"></script>
   </body>
 </html>

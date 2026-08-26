@@ -1,0 +1,85 @@
+.animate-pop-in {
+    animation: popIn var(--animation-duration) ease-in-out;
+}
+
+.animate-slide-in-left {
+    animation: slideInFromLeft var(--animation-duration) ease-in-out;
+}
+
+.animate-slide-in-right {
+    animation: slideInFromRight var(--animation-duration) ease-in-out;
+}
+
+.animate-slide-in-left-on-scroll-in {
+    animation: slideInFromLeft var(--animation-duration) ease-in-out;
+    /* Bind the timeline to the element's entry into the viewport */
+    animation-timeline: view();
+    /* Fine-tune when the animation begins and ends */
+    animation-range: entry 0% entry 100%;
+}
+
+.animate-slide-in-right-on-scroll-in {
+    animation: slideInFromRight var(--animation-duration) ease-in-out;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes popOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Respect the user's reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

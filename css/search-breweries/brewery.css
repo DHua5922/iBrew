@@ -1,0 +1,16 @@
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.brewery__details {
+    margin: 1rem;
+}
+
+.brewery__row {
+    gap: 0.5rem;
+}
+
+.brewery__para {
+    line-height: 1.75rem;
+}

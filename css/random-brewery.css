@@ -16,12 +16,16 @@
 .brewery__row {
     gap: 0.3rem;
 }
+
 #map {
     height: 400px;
 }
-#map, .brewery__description {
+
+#map,
+.brewery__description {
     width: 50%;
 }
+
 .brewery__para {
     line-height: 2rem;
 }
@@ -36,6 +40,7 @@
     font-size: 5rem;
     color: var(--dark-color);
 }
+
 .brewery__message--error {
     text-align: center;
     color: var(--dark-color);
@@ -49,12 +54,15 @@
         flex-wrap: wrap;
     }
 
-    #map, .brewery__description {
+    #map,
+    .brewery__description {
         width: 100%;
     }
+
     .brewery__description {
         text-align: center;
     }
+
     .brewery__row {
         justify-content: center;
     }

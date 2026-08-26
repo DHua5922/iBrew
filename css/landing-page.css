@@ -23,12 +23,9 @@
     text-decoration: none;
 }
 
-.landing__image--wrapper, .landing__description {
-    flex: 0.5;
-}
-
 .landing__description,
 .landing__image--wrapper {
+    flex: 0.5;
     transition: all var(--animation-duration) ease;
 }
 
@@ -37,10 +34,10 @@
         font-size: 2rem;
     }
 
-    .landing__para, .landing__link {
+    .landing__para,
+    .landing__link {
         font-size: 1rem;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -51,6 +48,7 @@
     .landing__row {
         flex-direction: column;
     }
+
     .landing__row--reverse {
         flex-direction: column-reverse;
     }
@@ -63,5 +61,4 @@
     .landing__description {
         text-align: center;
     }
-    
 }

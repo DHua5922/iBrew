@@ -9,7 +9,7 @@ I built this project as a front-end portfolio piece focused on practical product
 - Searches breweries by keyword using the Open Brewery DB API
 - Displays responsive search result cards with brewery type, address, and phone
 - Sorts results alphabetically by brewery name
-- Opens brewery details in an accessible popover
+- Opens brewery details in an accessible modal dialog
 - Displays brewery locations with Google Maps
 - Generates a random brewery recommendation
 - Supports light and dark themes with `localStorage`
@@ -17,7 +17,9 @@ I built this project as a front-end portfolio piece focused on practical product
 
 ## Engineering Highlights
 
-- Separated HTML, CSS, and JavaScript into page-specific and shared files
+- Separated shared layout and utility styles from page-specific CSS
+- Split search behavior into small ES modules for state, result rendering, and
+  brewery dialog rendering
 - Used `addEventListener` instead of inline event handlers for maintainable behavior
 - Kept API calls in `scripts/api/brewery.js` so data fetching is isolated from UI rendering
 - Encoded user search input before sending API requests
@@ -34,7 +36,7 @@ I built this project as a front-end portfolio piece focused on practical product
 - Added `aria-current`, `aria-live`, `aria-expanded`, and `aria-pressed` where they describe real UI state
 - Marked decorative images and icons as hidden from assistive technology
 - Added visible keyboard focus states
-- Added keyboard-accessible popover close behavior
+- Added keyboard-accessible dialog controls
 - Respected reduced-motion preferences with `prefers-reduced-motion`
 
 ## Tech Stack
@@ -48,13 +50,37 @@ I built this project as a front-end portfolio piece focused on practical product
 
 ## Run Locally
 
-Open `index.html` directly in a browser.
+The search page uses native JavaScript modules, so serve the project through a
+local HTTP server instead of opening the HTML files directly:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000` in a browser.
+
+## Project Structure
+
+```text
+css/
+├── layout/              # Global, navigation, and footer styles
+├── search-breweries/    # Search-page component styles
+└── utilities/           # Reusable buttons, links, modal, and other utilities
+
+scripts/
+├── api/                 # Open Brewery DB requests
+├── search-breweries/    # Search state, results, dialog, and page coordinator
+├── map.js               # Google Maps integration
+├── navbar.js            # Mobile navigation behavior
+└── theme.js             # Theme loading, toggling, and persistence
+```
 
 ## What I Would Improve Next
 
 - Add automated accessibility checks with axe and continue validating overall page quality with Chrome Lighthouse
 - Add pagination if the API response strategy expands beyond the current pattern for loading more
-- Replace larger `innerHTML` template strings with DOM-building helpers or small rendering utilities to improve maintainability and reduce HTML injection risk
+- Replace the remaining `innerHTML` templates on the random brewery page with
+  DOM-building helpers
 
 ## Notes
 
