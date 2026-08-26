@@ -1,3 +1,7 @@
+const themeLocalStorageKey = "theme";
+const themeDataAttribute = "data-theme";
+const themeToggleBtnElem = document.querySelectorAll(".nav__theme-toggle-btn");
+
 window.addEventListener("DOMContentLoaded", () => {
   loadTheme();
 
