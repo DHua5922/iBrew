@@ -14,6 +14,22 @@ const state = createSearchState(PAGE_SIZE);
 const resultsView = createSearchResultsView(PAGE_SIZE);
 const breweryDialog = createBreweryDialog(dialogElement);
 
+window.addEventListener("DOMContentLoaded", bindSearchEvents);
+
+function bindSearchEvents() {
+  searchForm?.addEventListener("submit", onSearchBreweries);
+  sortDropdown?.addEventListener("change", (event) => {
+    state.sort(event.target.value);
+    renderCurrentResults();
+  });
+  expandButton?.addEventListener("click", () => {
+    state.showMore();
+    renderCurrentResults();
+  });
+  breweryList?.addEventListener("click", onClickBrewery);
+  breweryDialog.bindEvents();
+}
+
 async function onSearchBreweries(event) {
   event.preventDefault();
   const query = searchInput?.value.trim();
@@ -38,19 +54,3 @@ function onClickBrewery(event) {
   const brewery = state.findById(item.dataset.breweryId);
   if (brewery) breweryDialog.open(brewery);
 }
-
-function bindSearchEvents() {
-  searchForm?.addEventListener("submit", onSearchBreweries);
-  sortDropdown?.addEventListener("change", (event) => {
-    state.sort(event.target.value);
-    renderCurrentResults();
-  });
-  expandButton?.addEventListener("click", () => {
-    state.showMore();
-    renderCurrentResults();
-  });
-  breweryList?.addEventListener("click", onClickBrewery);
-  breweryDialog.bindEvents();
-}
-
-window.addEventListener("DOMContentLoaded", bindSearchEvents);

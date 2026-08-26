@@ -1,0 +1,14 @@
+.dark-outline-on-focus:focus {
+    outline-color: var(--dark-color);
+}
+
+.light-outline-on-focus:focus {
+    outline-color: var(--light-color);
+}
+
+.dark-outline-on-focus:focus,
+.light-outline-on-focus:focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 2px;
+}
