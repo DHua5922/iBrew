@@ -4,6 +4,15 @@
     border: none;
     cursor: pointer;
     border-radius: 50px;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-dark-primary-hover:hover,
+.btn-light-primary-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn-transparent {
